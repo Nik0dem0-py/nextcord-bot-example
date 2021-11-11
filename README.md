@@ -28,7 +28,7 @@ Still pretty easy? :wink:
 
 In that .env file, paste in your token from [here](https://discord.com/developers).
 
-`bottoken=this.is.howitshouldlook`
+`bottoken=token.in.here`
 
 **4. Hit that run button and BOOM! :white_check_mark:**
 
