@@ -2,6 +2,12 @@
 
 Welcome! :heart: I'm back at it again, this time it's going to be better. An hour ago (11.11.21 around 10pm), I leaked my token :rofl:, Discord's bot DM'ed me (great system discord!) Anyways, where was I? Ah yes, here are the instruction how to use it!
 
+## Prerequisites:
+
+- Python 3.9.x is recommended, though 3.8.x could be used.
+- All required packages are in the `requirements.txt` file.
+
+
 ## Instructions - How to discord bot. :robot:
 
 **1. First of all you download the files? Or do we do it later? :thinking: Who am I kidding?**
