@@ -28,6 +28,8 @@ Still pretty easy? :wink:
 
 In that .env file, paste in your token from [here](https://discord.com/developers).
 
+`bottoken=this.is.howitshouldlook`
+
 **4. Hit that run button and BOOM! :white_check_mark:**
 
 It works!
