@@ -10,7 +10,7 @@ Press the little code button on the top right corner, and press "Download ZIP", 
 
 `git clone https://github.com/Nik0dem0-py/discord.py-bot-example.git`
 
-Easy eh? :thumbs_up:
+Easy eh? :thumbsup:
 
 **2.  Open a terminal :computer: in the directory, and run:**
 
