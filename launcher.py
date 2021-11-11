@@ -1,6 +1,6 @@
 from discord import Client, Intents, Embed, guild
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 import os
 from discord_slash.utils.manage_commands import create_option, create_choice
 from dotenv import load_dotenv
@@ -11,6 +11,8 @@ from discord_slash.utils import manage_components
 import asyncio
 from discord.ext.tasks import loop
 from asyncio import sleep
+import random
+from itertools import cycle
 
 
 
@@ -18,15 +20,17 @@ from asyncio import sleep
 
 
 bot = commands.Bot(command_prefix=".", case_insensitive=True)
-slash = SlashCommand(bot, sync_commands=True)
 bot.remove_command('help')
 
 
 
-guild_ids=[811178517969895474]
 
 
 
+@tasks.loop(minutes=1.0)
+async def status_task():
+    statuses = ["I'm on Nik0dem0-py's Github!", "Hello there! ", "This bot is still getting developed!"]
+    await bot.change_presence(activity=discord.Game(random.choice(statuses)))
 
 
 
