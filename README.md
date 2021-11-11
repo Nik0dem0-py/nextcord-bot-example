@@ -26,7 +26,7 @@ In that .env file, paste in your token from [here](https://discord.com/developer
 
 It works!
 
-If you were unable to do all the steps, you are legally ~~dumb~~ uneducated in terms of computer knowledge.
+**If you were unable to do all the steps, you are legally ~~dumb~~ uneducated in terms of computer knowledge.**
 
 
 
