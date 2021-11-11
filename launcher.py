@@ -23,7 +23,7 @@ bot.remove_command('help')
 
 
 
-guild_ids=[811178517969895474]
+guild_ids=[your ids]
 
 
 
