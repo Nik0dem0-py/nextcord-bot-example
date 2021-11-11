@@ -1,0 +1,8 @@
+discord.py[voice]
+discord.py
+discord-py-slash-command
+Pillow
+requests
+python-dotenv
+discord-interactions
+asyncio
