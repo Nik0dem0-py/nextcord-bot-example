@@ -36,7 +36,7 @@ class Help(commands.Cog):
         version = "v0.2-alpha2" 
 	
 	
-        owner = 718183313176526877	
+        owner = "<@718183313176526877>"
         owner_name = "Niko UwU#6239"
         
 	
@@ -78,7 +78,7 @@ class Help(commands.Cog):
             
             emb.add_field(name="About", value=f"Coded by Niko UwU#6239\n\
                                     This version of  it is maintained by {owner}\n\
-                                    Visit https://github.com/Nik0dem0-py/discord.py-bot-example to submit bugs.")
+                                    Visit [this site](https://github.com/Nik0dem0-py/discord.py-bot-example/issues) to submit bugs.")
             emb.set_footer(text=f"Bot is running {version}")
 
       
