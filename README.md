@@ -6,6 +6,7 @@ Welcome! :heart: I'm back at it again, this time it's going to be better. An hou
 
 - Python 3.9.x is recommended, though 3.8.x could be used.
 - All required packages are in the `requirements.txt` file.
+- A computer that is able to run Windows 7/8.x/10 or macOS 10.9 **or** chad linux :sunglasses:
 
 
 ## Instructions - How to discord bot. :robot:
