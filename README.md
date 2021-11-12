@@ -27,9 +27,7 @@ Easy eh? :thumbsup:
 python3 -m venv discordbot
 ```
 
-Still pretty easy? :wink:
-
-**2.5.  In the same directory, run:**
+then:
 
 For windows:
 
@@ -43,6 +41,13 @@ For chad linux and macOS:
 source tutorial-env/bin/activate
 ```
 
+Still pretty easy? :wink:
+
+**2.5.  In the same directory, run:**
+
+```
+pip install -U -r requirements.txt
+```
 
 **3. Create a file name ".env"**
 
