@@ -1,3 +1,19 @@
 
 .env
 *.pyc
+discordbot/bin/activate
+*.csh
+discordbot/bin/easy_install
+discordbot/bin/pip
+*.9
+discordbot/bin/python
+discordbot/lib64
+*.cfg
+*.whl
+discordbot/bin/python3
+discordbot/bin/pip3
+discordbot/bin/normalizer
+discordbot/bin/dotenv
+discordbot/bin/chardetect
+*.ps1
+*.fish
