@@ -33,7 +33,14 @@ In that .env file, paste in your token from [here](https://discord.com/developer
 
 **4. Hit that run button and BOOM! :white_check_mark:**
 
-It works!
+You can open your IDE of choice and turn run it there
+
+**or:**
+
+```
+python3 launcher.py
+```
+Success! you have a working discord.py bot!
 
 **If you were unable to do all the steps, you are legally ~~dumb~~ uneducated in terms of computer knowledge.**
 
