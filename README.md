@@ -15,13 +15,17 @@ Welcome! :heart: I'm back at it again, this time it's going to be better. An hou
 
 Press the little code button on the top right corner, and press "Download ZIP", or;
 
-`git clone https://github.com/Nik0dem0-py/discord.py-bot-example.git`
+```
+git clone https://github.com/Nik0dem0-py/discord.py-bot-example.git
+```
 
 Easy eh? :thumbsup:
 
 **2.  Open a terminal :computer: in the directory, and run:**
 
-`pip install -U -r requirements.txt`
+```
+pip install -U -r requirements.txt
+```
 
 Still pretty easy? :wink:
 
@@ -29,7 +33,9 @@ Still pretty easy? :wink:
 
 In that .env file, paste in your token from [here](https://discord.com/developers).
 
-`bottoken=token.in.here`
+```
+bottoken=token.in.here
+```
 
 **4. Hit that run button and BOOM! :white_check_mark:**
 
