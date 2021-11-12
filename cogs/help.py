@@ -33,7 +33,7 @@ class Help(commands.Cog):
         Sends this help message.
         """
         prefix = "."
-        version = "v0.2-alpha1" 
+        version = "v0.2-alpha2" 
 	
 	
         owner = "718183313176526877"	
