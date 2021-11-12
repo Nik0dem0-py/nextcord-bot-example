@@ -2,6 +2,7 @@ from discord import Client, Intents, Embed, guild
 import discord
 from discord.ext import commands, tasks
 import os
+from discord.ext.commands.core import has_permissions, MissingPermissions
 from discord_slash.utils.manage_commands import create_option, create_choice
 from dotenv import load_dotenv
 from discord_slash import SlashCommand
@@ -44,11 +45,14 @@ async def on_ready():
 async def load(ctx, extension):
     if (ctx.message.author.permissions_in(ctx.message.channel).manage_messages):
         bot.load_extension(f'cogs.{extension}')
+        await ctx.send(f'Loaded Cog `{extension}`.')
+
 
 @bot.command()
 async def unload(ctx, extension):
     if (ctx.message.author.permissions_in(ctx.message.channel).manage_messages):
         bot.unload_extension(f'cogs.{extension}')
+        await ctx.send(f'Unloaded Cog `{extension}`.')
 
 for filename in os.listdir('cogs'):
     if filename.endswith('.py'):
