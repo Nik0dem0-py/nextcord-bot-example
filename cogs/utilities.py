@@ -1,7 +1,10 @@
 import discord
 from discord.ext import commands
 
-class Ping(commands.Cog):
+class Utilities(commands.Cog):
+    """
+    Shows misc information
+    """
     
     
     def __init__(self, bot):
@@ -13,7 +16,8 @@ class Ping(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx):
-        await ctx.send(f'Pong! `{round(self.bot.latency * 1000)}ms`')
+        """Sends bot latency :ping_pong:"""
+        await ctx.send(f'Pong! :ping_pong: `{round(self.bot.latency * 1000)}ms`')
 
 def setup(bot):
-    bot.add_cog(Ping(bot))
+    bot.add_cog(Utilities(bot))

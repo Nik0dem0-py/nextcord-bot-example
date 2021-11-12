@@ -21,16 +21,17 @@ from itertools import cycle
 
 bot = commands.Bot(command_prefix=".", case_insensitive=True)
 bot.remove_command('help')
+statuses = ["I'm on Nik0dem0-py's Github!", "Hello there! ", "This bot is still getting developed!"]
 
 
 
-
-
-
-@tasks.loop(minutes=1.0)
-async def status_task():
-    statuses = ["I'm on Nik0dem0-py's Github!", "Hello there! ", "This bot is still getting developed!"]
+@tasks.loop(seconds=10.0)
+@bot.event
+async def on_ready():
     await bot.change_presence(activity=discord.Game(random.choice(statuses)))
+
+
+
 
 
 
