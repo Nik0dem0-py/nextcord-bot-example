@@ -36,7 +36,7 @@ class Help(commands.Cog):
         version = "v0.2-alpha2" 
 	
 	
-        owner = "718183313176526877"	
+        owner = 718183313176526877	
         owner_name = "Niko UwU#6239"
         
 	
@@ -69,7 +69,7 @@ class Help(commands.Cog):
             for command in self.bot.walk_commands():
       
                 if not command.cog_name and not command.hidden:
-                    commands_desc += f'{command.name} - {command.help}\n'
+                    commands_desc += f'`{command.name}` - {command.help}\n'
 
             
             if commands_desc:
