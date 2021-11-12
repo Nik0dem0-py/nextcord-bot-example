@@ -24,10 +24,25 @@ Easy eh? :thumbsup:
 **2.  Open a terminal :computer: in the directory, and run:**
 
 ```
-pip install -U -r requirements.txt
+python3 -m venv discordbot
 ```
 
 Still pretty easy? :wink:
+
+**2.5.  In the same directory, run:**
+
+For windows:
+
+```
+tutorial-env\Scripts\activate.bat
+```
+
+For chad linux and macOS:
+
+```
+source tutorial-env/bin/activate
+```
+
 
 **3. Create a file name ".env"**
 
