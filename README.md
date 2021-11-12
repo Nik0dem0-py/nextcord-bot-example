@@ -40,7 +40,7 @@ You can open your IDE of choice and turn run it there
 ```
 python3 launcher.py
 ```
-Success! you have a working discord.py bot!
+Success! you have a working discord.py bot! :thumbsup:
 
 **If you were unable to do all the steps, you are legally ~~dumb~~ uneducated in terms of computer knowledge.**
 
