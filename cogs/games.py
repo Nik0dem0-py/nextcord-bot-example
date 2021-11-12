@@ -1,9 +1,9 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import random
 
 def get_embed(_title, _description, _color):
-    return discord.Embed(title=_title, description=_description, color=_color)
+    return nextcord.Embed(title=_title, description=_description, color=_color)
 
 class Games(commands.Cog):
 
@@ -27,7 +27,7 @@ class Games(commands.Cog):
         If it is not resolved in the allotted time, The Impostor(s) will win.
         """
 
-        embed1 = discord.Embed(title = "Who's the imposter?" , description = "Find out who the imposter is, before the reactor breaks down!" , color=0xff0000)
+        embed1 = nextcord.Embed(title = "Who's the imposter?" , description = "Find out who the imposter is, before the reactor breaks down!" , color=0xff0000)
         
         embed1.add_field(name = 'Cream' , value= '<:crewmate_cream:908691460134686741>' , inline=False)
         embed1.add_field(name = 'Purple' , value= '<:crewmate_pastelpurple:908691382682673184>' , inline=False)
@@ -63,13 +63,13 @@ class Games(commands.Cog):
         except TimeoutError:
             
             description = "Reactor Meltdown.{0} was the imposter...".format(imposter)
-            embed = get_embed("Defeat", description, discord.Color.red())
+            embed = get_embed("Defeat", description, nextcord.Color.red())
             await ctx.send(embed=embed)
         else:
             
             if str(self.reacted) == emojis[imposter]:
                 description = "**{0}** was the imposter...".format(imposter)
-                embed = get_embed("Victory", description, discord.Color.green())
+                embed = get_embed("Victory", description, nextcord.Color.green())
                 await ctx.send(embed=embed)
 
             
@@ -77,7 +77,7 @@ class Games(commands.Cog):
                 for key, value in emojis.items(): 
                     if value == str(self.reacted):
                         description = "**{0}** was not the imposter...".format(key)
-                        embed = get_embed("Defeat", description, discord.Color.red())
+                        embed = get_embed("Defeat", description, nextcord.Color.red())
                         await ctx.send(embed=embed)
                         break
 

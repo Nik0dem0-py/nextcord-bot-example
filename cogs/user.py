@@ -1,6 +1,6 @@
-import discord
-from discord.ext import commands
-from discord.ext.commands import bot
+import nextcord
+from nextcord.ext import commands
+from nextcord.ext.commands import bot
 
 class User(commands.Cog):
     """
@@ -17,7 +17,7 @@ class User(commands.Cog):
     @commands.command(name="avatar", descritpion="Shows following member's profile picture", aliases=["av"])
     async def _avatar(self, ctx, member : commands.MemberConverter):
         """Shows following member's profile picture"""
-        embed = discord.Embed(title = f"{member.name}'s profile picture", colour = discord.Colour.blue())
+        embed = nextcord.Embed(title = f"{member.name}'s profile picture", colour = nextcord.Colour.blue())
         embed.set_image(url=member.avatar_url)
         await ctx.send(embed=embed)
 
@@ -25,10 +25,10 @@ class User(commands.Cog):
     async def info(self, ctx, member : commands.MemberConverter):
         """Shows information about the following member"""
        
-        embed = discord.Embed(
+        embed = nextcord.Embed(
             title=f"About {member.name}", 
             description = f"ID: `{member.id}`\n Name: `{member.name}#{member.discriminator}` \n Avatar URL: [click!]({member.avatar_url})", 
-            colour = discord.Colour.blue())
+            colour = nextcord.Colour.blue())
         embed.set_thumbnail(url=member.avatar_url)
         await ctx.send(embed=embed)
 

@@ -1,16 +1,11 @@
-from discord import Client, Intents, Embed, guild
-import discord
-from discord.ext import commands, tasks
+from nextcord import Client, Intents, Embed, guild
+import nextcord
+from nextcord.ext import commands, tasks
 import os
-from discord.ext.commands.core import has_permissions, MissingPermissions
-from discord_slash.utils.manage_commands import create_option, create_choice
+from nextcord.ext.commands.core import has_permissions, MissingPermissions
 from dotenv import load_dotenv
-from discord_slash import SlashCommand
-from discord_slash.utils.manage_components import create_button, create_actionrow
-from discord_slash.model import ButtonStyle
-from discord_slash.utils import manage_components
 import asyncio
-from discord.ext.tasks import loop
+from nextcord.ext.tasks import loop
 from asyncio import sleep
 import random
 from itertools import cycle
@@ -29,7 +24,7 @@ statuses = ["I'm on Nik0dem0-py's Github!", "Hello there! ", "This bot is still 
 @tasks.loop(seconds=10.0)
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Game(random.choice(statuses)))
+    await bot.change_presence(activity=nextcord.Game(random.choice(statuses)))
 
 
 

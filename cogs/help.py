@@ -1,6 +1,6 @@
-import discord
-from discord.errors import Forbidden
-from discord.ext import commands
+import nextcord
+from nextcord.errors import Forbidden
+from nextcord.ext import commands
 import asyncio
 
 
@@ -52,7 +52,7 @@ class Help(commands.Cog):
                 owner = owner
 
             
-            emb = discord.Embed(title='Commands and modules', color=discord.Color.blue(),
+            emb = nextcord.Embed(title='Commands and modules', color=nextcord.Color.blue(),
                                 description=f'Use `{prefix}help <module>` to gain more information about that module '
                                             f':smiley:\n')
 
@@ -78,7 +78,7 @@ class Help(commands.Cog):
             
             emb.add_field(name="About", value=f"Coded by Niko UwU#6239\n\
                                     This version of  it is maintained by {owner}\n\
-                                    Visit [this site](https://github.com/Nik0dem0-py/discord.py-bot-example/issues) to submit bugs.")
+                                    Visit [this site](https://github.com/Nik0dem0-py/nextcord.py-bot-example/issues) to submit bugs.")
             emb.set_footer(text=f"Bot is running {version}")
 
       
@@ -90,8 +90,8 @@ class Help(commands.Cog):
                 if cog.lower() == input[0].lower():
 
                     
-                    emb = discord.Embed(title=f'{cog} - Commands', description=self.bot.cogs[cog].__doc__,
-                                        color=discord.Color.green())
+                    emb = nextcord.Embed(title=f'{cog} - Commands', description=self.bot.cogs[cog].__doc__,
+                                        color=nextcord.Color.green())
 
                    
                     for command in self.bot.get_cog(cog).get_commands():
@@ -103,22 +103,22 @@ class Help(commands.Cog):
 
            
             else:
-                emb = discord.Embed(title="What's that?!",
+                emb = nextcord.Embed(title="What's that?!",
                                     description=f"I've never heard from a category called `{input[0]}` before :scream:",
-                                    color=discord.Color.orange())
+                                    color=nextcord.Color.orange())
 
       
         elif len(input) > 1:
-            emb = discord.Embed(title="That's too much.",
+            emb = nextcord.Embed(title="That's too much.",
                                 description="Please request only one module at once :sweat_smile:",
-                                color=discord.Color.orange())
+                                color=nextcord.Color.orange())
 
         else:
-            emb = discord.Embed(title="It's a magical place.",
+            emb = nextcord.Embed(title="It's a magical place.",
                                 description="I don't know how you got here. But I didn't see this coming at all.\n"
                                             "Would you please be so kind to report that issue to me on github?\n",
                                            
-                                color=discord.Color.red())
+                                color=nextcord.Color.red())
 
      
         await send_embed(ctx, emb)
