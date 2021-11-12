@@ -17,5 +17,14 @@ class Avatar(commands.Cog):
         embed.set_image(url=member.avatar_url)
         await ctx.send(embed=embed)
 
+    @commands.command(aliases=['userinfo','user'])
+    async def info(self, ctx, member : commands.MemberConverter):
+        embed = discord.Embed(
+            title=f"About {member.name}", 
+            description = f"ID: `{member.id}`\n Name: `{member.name}#{member.discriminator}` \n Avatar URL: [click!]({member.avatar_url})", 
+            colour = discord.Colour.blue())
+        embed.set_thumbnail(url=member.avatar_url)
+        await ctx.send(embed=embed)
+
 def setup(bot):
     bot.add_cog(Avatar(bot))
