@@ -32,13 +32,13 @@ then:
 For windows:
 
 ```
-tutorial-env\Scripts\activate.bat
+discordbot\Scripts\activate.bat
 ```
 
 For chad linux and macOS:
 
 ```
-source tutorial-env/bin/activate
+source discordbot/bin/activate
 ```
 
 Still pretty easy? :wink:
