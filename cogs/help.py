@@ -25,6 +25,10 @@ class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.Cog.listener()
+    async def on_ready(self):
+        print('Cog "Help" has been loaded.')
+
     @commands.command()
     @commands.bot_has_permissions(add_reactions=True,embed_links=True)
 
@@ -78,7 +82,7 @@ class Help(commands.Cog):
             
             emb.add_field(name="About", value=f"Coded by Niko UwU#6239\n\
                                     This version of  it is maintained by {owner}\n\
-                                    Visit [this site](https://github.com/Nik0dem0-py/nextcord.py-bot-example/issues) to submit bugs.")
+                                    Visit [this site](https://github.com/Nik0dem0-py/nextcord-bot-example/issues) to submit bugs.")
             emb.set_footer(text=f"Bot is running {version}")
 
       
