@@ -36,6 +36,7 @@ async def on_ready():
     print("Bot is online.")
 
 
+
 @bot.command()
 async def load(ctx, extension):
     if (ctx.message.author.permissions_in(ctx.message.channel).manage_messages):
