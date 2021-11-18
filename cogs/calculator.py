@@ -9,6 +9,8 @@ class Calculator(commands.Cog):
     
     def __init__(self, bot):
         self.bot = bot
+    
+    
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -16,24 +18,28 @@ class Calculator(commands.Cog):
     
 
     @commands.command()
-    async def add(self, ctx, left: int, right: int):
+    async def add(self, ctx, *nums):
         """Adds two numbers."""
-        await ctx.send(f"`{left + right}` 🧮")
+        var = f' {"+"} '.join(nums)
+        await ctx.send(f"||{var}|| = **`{eval(var)}`** 🧮")
 
     @commands.command()
-    async def multiply(self, ctx, left: int, right: int):
+    async def multiply(self, ctx, *nums):
         """Multiplies two numbers."""
-        await ctx.send(f"`{left * right}` 🧮")
+        var = f' {"*"} '.join(nums)
+        await ctx.send(f"||{var}|| = **`{eval(var)}`** 🧮")
     
     @commands.command()
-    async def divide(self, ctx, left: int, right: int):
+    async def divide(self, ctx, *nums):
         """Divides two number."""
-        await ctx.send(f"`{left / right}` 🧮")
+        var = f' {"/"} '.join(nums)
+        await ctx.send(f"||{var}|| = **`{eval(var)}`** 🧮")
     
     @commands.command()
-    async def subtract(self, ctx, left: int, right: int):
+    async def subtract(self, ctx, *nums):
         """Subtracts two numbers."""
-        await ctx.send(f"`{left - right}` 🧮")
+        var = f' {"-"} '.join(nums)
+        await ctx.send(f"||{var}|| = **`{eval(var)}`** 🧮")
 
 
 def setup(bot):
