@@ -3,3 +3,4 @@ requests
 python-dotenv
 asyncio
 nextcord[voice]
+googletrans==3.1.0a0
