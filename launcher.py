@@ -37,6 +37,8 @@ async def on_ready():
 
 
 
+
+
 @bot.command()
 async def load(ctx, extension):
     if (ctx.message.author.permissions_in(ctx.message.channel).manage_messages):
