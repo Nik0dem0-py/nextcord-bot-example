@@ -56,7 +56,7 @@ class Help(commands.Cog):
                 owner = owner
 
             
-            emb = nextcord.Embed(title='Commands and modules', color=nextcord.Color.blue(),
+            emb = nextcord.Embed(title='Commands and modules', color=nextcord.Color.blurple(),
                                 description=f'Use `{prefix}help <module>` to gain more information about that module '
                                             f':smiley:\n')
 
@@ -95,7 +95,7 @@ class Help(commands.Cog):
 
                     
                     emb = nextcord.Embed(title=f'{cog} - Commands', description=self.bot.cogs[cog].__doc__,
-                                        color=nextcord.Color.green())
+                                        color=nextcord.Color.blurple())
 
                    
                     for command in self.bot.get_cog(cog).get_commands():

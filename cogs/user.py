@@ -17,7 +17,7 @@ class User(commands.Cog):
     @commands.command(name="avatar", descritpion="Shows following member's profile picture", aliases=["av"])
     async def _avatar(self, ctx, member : commands.MemberConverter):
         """Shows following member's profile picture"""
-        embed = nextcord.Embed(title = f"{member.name}'s profile picture", colour = nextcord.Colour.blue())
+        embed = nextcord.Embed(title = f"{member.name}'s profile picture", colour = nextcord.Colour.blurple())
         embed.set_image(url=member.avatar_url)
         await ctx.send(embed=embed)
 
@@ -28,7 +28,7 @@ class User(commands.Cog):
         embed = nextcord.Embed(
             title=f"About {member.name}", 
             description = f"ID: `{member.id}`\n Name: `{member.name}#{member.discriminator}` \n Avatar URL: [click!]({member.avatar_url})", 
-            colour = nextcord.Colour.blue())
+            colour = nextcord.Colour.blurple())
         embed.set_thumbnail(url=member.avatar_url)
         await ctx.send(embed=embed)
 
