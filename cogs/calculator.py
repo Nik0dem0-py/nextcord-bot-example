@@ -18,22 +18,22 @@ class Calculator(commands.Cog):
     @commands.command()
     async def add(self, ctx, left: int, right: int):
         """Adds two numbers."""
-        await ctx.send(left + right + "🧮")
+        await ctx.send(f"`{left + right}` 🧮")
 
     @commands.command()
     async def multiply(self, ctx, left: int, right: int):
         """Multiplies two numbers."""
-        await ctx.send(left * right + "🧮")
+        await ctx.send(f"`{left * right}` 🧮")
     
     @commands.command()
     async def divide(self, ctx, left: int, right: int):
         """Divides two number."""
-        await ctx.send(left / right + "🧮")
+        await ctx.send(f"`{left / right}` 🧮")
     
     @commands.command()
     async def subtract(self, ctx, left: int, right: int):
         """Subtracts two numbers."""
-        await ctx.send(left - right + "🧮")
+        await ctx.send(f"`{left - right}` 🧮")
 
 
 def setup(bot):
