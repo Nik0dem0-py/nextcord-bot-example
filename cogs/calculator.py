@@ -31,7 +31,7 @@ class Calculator(commands.Cog):
     
     @commands.command()
     async def divide(self, ctx, *nums):
-        """Divides two number."""
+        """Divides two numbers."""
         var = f' {"/"} '.join(nums)
         await ctx.send(f"||{var}|| = **`{eval(var)}`** 🧮")
     
@@ -40,6 +40,9 @@ class Calculator(commands.Cog):
         """Subtracts two numbers."""
         var = f' {"-"} '.join(nums)
         await ctx.send(f"||{var}|| = **`{eval(var)}`** 🧮")
+    
+
+    
 
 
 def setup(bot):
