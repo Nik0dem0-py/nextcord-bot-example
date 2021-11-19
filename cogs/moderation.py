@@ -39,6 +39,31 @@ class Moderation(commands.Cog):
                     f"Hey, seems like I can't send any message in {ctx.channel.name} on {ctx.guild.name}\n"
                     f"May you inform the server team about this issue? :slight_smile: ", embed=embed)
 
+    @commands.command()
+    @commands.has_permissions(ban_members=True)
+    async def ban(self, ctx, member: commands.MemberConverter):
+        """Bans the following member"""
+        await ctx.send('What is the reason?')
+        msg = await self.bot.wait_for('message')
+        reason = msg.content
+        description = f'''
+        **Member:** = {member}
+        **Responsible moderator:** {ctx.author.mention}
+        **Reason:** {reason}
+        '''
+
+        embed = nextcord.Embed(title='Ban', description=description, colour=nextcord.Colour.green())
+        try:
+            await member.ban(reason=reason)
+            await ctx.send(content=None, embed=embed)
+        except Forbidden:
+            try:
+                await ctx.send("Hey, seems like I can't ban people. Please check my permissions :)")
+            except Forbidden:
+                await ctx.author.send(
+                    f"Hey, seems like I can't send any message in {ctx.channel.name} on {ctx.guild.name}\n"
+                    f"May you inform the server team about this issue? :slight_smile: ", embed=embed)
+
 
 
 
