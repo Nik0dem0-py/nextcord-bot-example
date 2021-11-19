@@ -5,7 +5,9 @@ import json
 import asyncio
 
 class Tickets(commands.Cog):
-    """If help is needed, create a ticket!"""
+    """
+    If help is needed, create a ticket!
+    """
     def __init__(self, bot):
         self.bot = bot
 
