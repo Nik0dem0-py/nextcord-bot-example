@@ -12,7 +12,7 @@ class User(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print('Cog "Avatar" has been loaded')
+        print('Cog "User" has been loaded')
     
     @commands.command(name="avatar", descritpion="Shows following member's profile picture", aliases=["av"])
     async def _avatar(self, ctx, member : commands.MemberConverter):
