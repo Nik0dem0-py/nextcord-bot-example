@@ -4,7 +4,7 @@ from nextcord.errors import Forbidden
 
 class Moderation(commands.Cog):
     """
-    Moderation commands.
+    Moderation commands for admins/moderators.
     """
         
     def __init__(self, bot):
