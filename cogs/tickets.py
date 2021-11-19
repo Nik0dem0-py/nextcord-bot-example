@@ -27,7 +27,7 @@ class Tickets(commands.Cog):
         else:
             message_content = "".join(args)
 
-        with open("cogs/jsonfiles/tickets.json") as f:
+        with open("cogs/data/tickets.json") as f:
             data = json.load(f)
 
         ticket_number = int(data["ticket-counter"])
@@ -72,7 +72,7 @@ class Tickets(commands.Cog):
         data["ticket-channel-ids"].append(ticket_channel.id)
 
         data["ticket-counter"] = int(ticket_number)
-        with open("cogs/jsonfiles/tickets.json", 'w') as f:
+        with open("cogs/data/tickets.json", 'w') as f:
             json.dump(data, f)
         
         created_em = discord.Embed(title=" Tickets", description="Your ticket has been created at {}".format(ticket_channel.mention), color=0x00a8ff)
@@ -83,7 +83,7 @@ class Tickets(commands.Cog):
     @has_permissions(administrator=True)
     async def close(self,ctx):
         """Use this to close a ticket. This command only works in ticket channels."""
-        with open('cogs/jsonfiles/tickets.json') as f:
+        with open('cogs/data/tickets.json') as f:
             data = json.load(f)
 
         if ctx.channel.id in data["ticket-channel-ids"]:
@@ -104,7 +104,7 @@ class Tickets(commands.Cog):
                 index = data["ticket-channel-ids"].index(channel_id)
                 del data["ticket-channel-ids"][index]
 
-                with open('cogs/jsonfiles/tickets.json', 'w') as f:
+                with open('cogs/data/tickets.json', 'w') as f:
                     json.dump(data, f)
             
             except asyncio.TimeoutError:
@@ -118,7 +118,7 @@ class Tickets(commands.Cog):
     async def addaccess(self,ctx, role_id=None):
         """This can be used to give a specific role access to all tickets. This command can only be run if you have an admin-level role for this bot."""
 
-        with open('cogs/jsonfiles/tickets.json') as f:
+        with open('cogs/data/tickets.json') as f:
             data = json.load(f)
         
         valid_user = False
@@ -138,12 +138,12 @@ class Tickets(commands.Cog):
                 try:
                     role = ctx.guild.get_role(role_id)
 
-                    with open("cogs/jsonfiles/tickets.json") as f:
+                    with open("cogs/data/tickets.json") as f:
                         data = json.load(f)
 
                     data["valid-roles"].append(role_id)
 
-                    with open('cogs/jsonfiles/tickets.json', 'w') as f:
+                    with open('cogs/data/tickets.json', 'w') as f:
                         json.dump(data, f)
                     
                     em = discord.Embed(title=" Tickets", description="You have successfully added `{}` to the list of roles with access to tickets.".format(role.name), color=0x00a8ff)
@@ -166,7 +166,7 @@ class Tickets(commands.Cog):
     @has_permissions(administrator=True)
     async def delaccess(self,ctx, role_id=None):
         """This can be used to remove a specific role's access to all tickets. This command can only be run if you have an admin-level role for this bot."""
-        with open('cogs/jsonfiles/tickets.json') as f:
+        with open('cogs/data/tickets.json') as f:
             data = json.load(f)
         
         valid_user = False
@@ -184,7 +184,7 @@ class Tickets(commands.Cog):
                 role_id = int(role_id)
                 role = ctx.guild.get_role(role_id)
 
-                with open("cogs/jsonfiles/tickets.json") as f:
+                with open("cogs/data/tickets.json") as f:
                     data = json.load(f)
 
                 valid_roles = data["valid-roles"]
@@ -196,7 +196,7 @@ class Tickets(commands.Cog):
 
                     data["valid-roles"] = valid_roles
 
-                    with open('cogs/jsonfiles/tickets.json', 'w') as f:
+                    with open('cogs/data/tickets.json', 'w') as f:
                         json.dump(data, f)
 
                     em = discord.Embed(title=" Tickets", description="You have successfully removed `{}` from the list of roles with access to tickets.".format(role.name), color=0x00a8ff)
@@ -221,7 +221,7 @@ class Tickets(commands.Cog):
     async def addpingedrole(self,ctx, role_id=None):
         """This command adds a role to the list of roles that are pinged when a new ticket is created. This command can only be run if you have an admin-level role for this bot."""
 
-        with open('cogs/jsonfiles/tickets.json') as f:
+        with open('cogs/data/tickets.json') as f:
             data = json.load(f)
         
         valid_user = False
@@ -242,12 +242,12 @@ class Tickets(commands.Cog):
                 try:
                     role = ctx.guild.get_role(role_id)
 
-                    with open("cogs/jsonfiles/tickets.json") as f:
+                    with open("cogs/data/tickets.json") as f:
                         data = json.load(f)
 
                     data["pinged-roles"].append(role_id)
 
-                    with open('cogs/jsonfiles/tickets.json', 'w') as f:
+                    with open('cogs/data/tickets.json', 'w') as f:
                         json.dump(data, f)
 
                     em = discord.Embed(title=" Tickets", description="You have successfully added `{}` to the list of roles that get pinged when new tickets are created!".format(role.name), color=0x00a8ff)
@@ -271,7 +271,7 @@ class Tickets(commands.Cog):
     async def delpingedrole(self,ctx, role_id=None):
         """This command removes a role from the list of roles that are pinged when a new ticket is created. This command can only be run if you have an admin-level role for this bot."""
 
-        with open('cogs/jsonfiles/tickets.json') as f:
+        with open('cogs/data/tickets.json') as f:
             data = json.load(f)
         
         valid_user = False
@@ -289,7 +289,7 @@ class Tickets(commands.Cog):
                 role_id = int(role_id)
                 role = ctx.guild.get_role(role_id)
 
-                with open("cogs/jsonfiles/tickets.json") as f:
+                with open("cogs/data/tickets.json") as f:
                     data = json.load(f)
 
                 pinged_roles = data["pinged-roles"]
@@ -301,7 +301,7 @@ class Tickets(commands.Cog):
 
                     data["pinged-roles"] = pinged_roles
 
-                    with open('cogs/jsonfiles/tickets.json', 'w') as f:
+                    with open('cogs/data/tickets.json', 'w') as f:
                         json.dump(data, f)
 
                     em = discord.Embed(title=" Tickets", description="You have successfully removed `{}` from the list of roles that get pinged when new tickets are created.".format(role.name), color=0x00a8ff)
@@ -329,12 +329,12 @@ class Tickets(commands.Cog):
             role_id = int(role_id)
             role = ctx.guild.get_role(role_id)
 
-            with open("cogs/jsonfiles/tickets.json") as f:
+            with open("cogs/data/tickets.json") as f:
                 data = json.load(f)
 
             data["verified-roles"].append(role_id)
 
-            with open('cogs/jsonfiles/tickets.json', 'w') as f:
+            with open('cogs/data/tickets.json', 'w') as f:
                 json.dump(data, f)
             
             em = discord.Embed(title=" Tickets", description="You have successfully added `{}` to the list of roles that can run admin-level commands!".format(role.name), color=0x00a8ff)
@@ -352,7 +352,7 @@ class Tickets(commands.Cog):
             role_id = int(role_id)
             role = ctx.guild.get_role(role_id)
 
-            with open("cogs/jsonfiles/tickets.json") as f:
+            with open("cogs/data/tickets.json") as f:
                 data = json.load(f)
 
             admin_roles = data["verified-roles"]
@@ -364,7 +364,7 @@ class Tickets(commands.Cog):
 
                 data["verified-roles"] = admin_roles
 
-                with open('cogs/jsonfiles/tickets.json', 'w') as f:
+                with open('cogs/data/tickets.json', 'w') as f:
                     json.dump(data, f)
                 
                 em = discord.Embed(title=" Tickets", description="You have successfully removed `{}` from the list of roles that get pinged when new tickets are created.".format(role.name), color=0x00a8ff)
