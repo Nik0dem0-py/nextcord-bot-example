@@ -64,6 +64,7 @@ class Moderation(commands.Cog):
         '''
 
         embed = nextcord.Embed(title='Ban', description=description, colour=nextcord.Colour.green())
+        embed.set_image(url="https://c.tenor.com/ahRds9fLT_oAAAAC/blob-banned.gif")
         try:
             await member.ban(reason=reason)
             await ctx.send(content=None, embed=embed)
@@ -75,6 +76,21 @@ class Moderation(commands.Cog):
                     f"Hey, seems like I can't send any message in {ctx.channel.name} on {ctx.guild.name}\n"
                     f"May you inform the server team about this issue? :slight_smile: ", embed=embed)
 
+
+# The below code unbans player.
+    @commands.command()
+    @commands.has_permissions(administrator=True)
+    async def unban(self, ctx, *, member):
+        banned_users = await ctx.guild.bans()
+        member_name, member_discriminator = member.split("#")
+
+        for ban_entry in banned_users:
+            user = ban_entry.user
+
+            if (user.name, user.discriminator) == (member_name, member_discriminator):
+                await ctx.guild.unban(user)
+                await ctx.send(f'User {user.mention} has been unbanned')
+                return
 
 
 
