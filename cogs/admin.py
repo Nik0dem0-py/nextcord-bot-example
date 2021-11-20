@@ -92,9 +92,9 @@ class Moderation(commands.Cog):
                 await ctx.send(f'User {user.mention} has been unbanned')
                 return
 
-    @bot.command()
+    @commands.command()
     @has_permissions(administrator=True)
-    async def lockdown(ctx, role : commands.RoleConverter):
+    async def lockdown(self, ctx, role : commands.RoleConverter):
         role = ctx.guild.roles[1] 
         perms = discord.Permissions(view_channel= False)
         await role.edit(permissions=perms)   
