@@ -101,7 +101,13 @@ class Moderation(commands.Cog):
         await ctx.send("**Full server lockdown iniciated.**")
 
 
-
+    @commands.command()
+    @has_permissions(administrator=True)
+    async def unlock(self, ctx, role : commands.RoleConverter):
+        role = ctx.guild.roles[1] 
+        perms = nextcord.Permissions(view_channel= True)
+        await role.edit(permissions=perms)
+        await ctx.send("**Server has been unlocked.**")       
 
 
 
