@@ -18,5 +18,3 @@ discordbot/bin/chardetect
 *.ps1
 *.fish
 
-cogs/data/tickets.json
-cogs/data/tickets.json
