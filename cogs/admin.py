@@ -64,7 +64,7 @@ class Moderation(commands.Cog):
         '''
 
         embed = nextcord.Embed(title='Ban', description=description, colour=nextcord.Colour.green())
-        embed.set_image(url="https://c.tenor.com/ahRds9fLT_oAAAAC/blob-banned.gif")
+        embed.set_image(url="https://tenor.com/view/bongocat-banhammer-ban-hammer-bongo-gif-18219363")
         try:
             await member.ban(reason=reason)
             await ctx.send(content=None, embed=embed)
@@ -92,7 +92,13 @@ class Moderation(commands.Cog):
                 await ctx.send(f'User {user.mention} has been unbanned')
                 return
 
-
+    @bot.command()
+    @has_permissions(administrator=True)
+    async def lockdown(ctx, role : commands.RoleConverter):
+        role = ctx.guild.roles[1] 
+        perms = discord.Permissions(view_channel= False)
+        await role.edit(permissions=perms)   
+        await ctx.send("**Full server lockdown iniciated.**")
 
 
 
