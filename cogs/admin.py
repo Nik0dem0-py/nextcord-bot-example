@@ -96,7 +96,7 @@ class Moderation(commands.Cog):
     @has_permissions(administrator=True)
     async def lockdown(self, ctx, role : commands.RoleConverter):
         role = ctx.guild.roles[1] 
-        perms = discord.Permissions(view_channel= False)
+        perms = nextcord.Permissions(view_channel= False)
         await role.edit(permissions=perms)   
         await ctx.send("**Full server lockdown iniciated.**")
 
