@@ -17,12 +17,12 @@ class Moderation(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator=True)
-    async def dm(self, ctx, user: nextcord.User, *, message: str):
+    async def dm(self, ctx, user: commands.MemberConverter, *, message: str):
         """ DM the user of your choice """
         try:
             await user.send(message)
             await ctx.send(f"✉️ Sent a DM to **{user}**")
-        except discord.Forbidden:
+        except nextcord.Forbidden:
             await ctx.send("This user might be having DMs blocked or it's a bot account...")
 
     @commands.command()

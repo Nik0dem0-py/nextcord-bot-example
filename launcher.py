@@ -9,13 +9,15 @@ from nextcord.ext.tasks import loop
 from asyncio import sleep
 import random
 from itertools import cycle
+import config
 
 
 
 
 
 
-bot = commands.Bot(command_prefix=".", case_insensitive=True)
+
+bot = commands.Bot(command_prefix=config.PREFIX, case_insensitive=True)
 bot.remove_command('help')
 statuses = ["I'm on Nik0dem0-py's Github!", "Hello there! ", "This bot is still getting developed!"]
 
