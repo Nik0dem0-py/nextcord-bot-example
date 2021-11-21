@@ -18,3 +18,4 @@ discordbot/bin/chardetect
 *.ps1
 *.fish
 
+discord.log
