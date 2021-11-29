@@ -1,9 +1,16 @@
 import nextcord
 from nextcord.ext import commands
 import random
+import logging
 
 def get_embed(_title, _description, _color):
     return nextcord.Embed(title=_title, description=_description, color=_color)
+
+logger = logging.getLogger('discord')
+logger.setLevel(logging.DEBUG)
+handler = logging.FileHandler(filename="discord.log", encoding='utf-8', mode='w')
+handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+logger.addHandler(handler)
 
 class Games(commands.Cog):
 

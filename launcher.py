@@ -1,5 +1,5 @@
 from nextcord import Client, Intents, Embed, guild
-import nextcord
+import nextcord 
 from nextcord.ext import commands, tasks
 import os
 from nextcord.ext.commands.core import has_permissions, MissingPermissions
@@ -10,7 +10,7 @@ from asyncio import sleep
 import random
 from itertools import cycle
 import config
-
+import sys
 
 
 
@@ -45,8 +45,7 @@ async def on_ready():
 async def load(ctx, extension):
     if (ctx.message.author.permissions_in(ctx.message.channel).manage_messages):
         bot.load_extension(f'cogs.{extension}')
-        await ctx.send(f'Loaded Cog `{extension}`.')
-
+        await ctx.send(f'Loaded Cog `{extension}`.')  
 
 @bot.command()
 async def unload(ctx, extension):

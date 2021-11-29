@@ -1,8 +1,15 @@
-import discord
-from discord.ext import commands
-from discord.ext.commands import has_permissions, MissingPermissions
+import nextcord
+from nextcord.ext import commands
+from nextcord.ext.commands import has_permissions, MissingPermissions
 import json
+import logging
 import asyncio
+
+logger = logging.getLogger('discord')
+logger.setLevel(logging.DEBUG)
+handler = logging.FileHandler(filename="discord.log", encoding='utf-8', mode='w')
+handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+logger.addHandler(handler)
 
 class Tickets(commands.Cog):
     """
@@ -45,7 +52,7 @@ class Tickets(commands.Cog):
         
         await ticket_channel.set_permissions(ctx.author, send_messages=True, read_messages=True, add_reactions=True, embed_links=True, attach_files=True, read_message_history=True, external_emojis=True)
 
-        em = discord.Embed(title="New ticket from {}#{}".format(ctx.author.name, ctx.author.discriminator), description= "{}".format(message_content), color=0x00a8ff)
+        em = nextcord.Embed(title="New ticket from {}#{}".format(ctx.author.name, ctx.author.discriminator), description= "{}".format(message_content), color=0x00a8ff)
 
         await ticket_channel.send(embed=em)
 
@@ -77,7 +84,7 @@ class Tickets(commands.Cog):
         with open("cogs/data/tickets.json", 'w') as f:
             json.dump(data, f)
         
-        created_em = discord.Embed(title=" Tickets", description="Your ticket has been created at {}".format(ticket_channel.mention), color=0x00a8ff)
+        created_em = nextcord.Embed(title=" Tickets", description="Your ticket has been created at {}".format(ticket_channel.mention), color=0x00a8ff)
         
         await ctx.send(embed=created_em)
 
@@ -97,7 +104,7 @@ class Tickets(commands.Cog):
 
             try:
 
-                em = discord.Embed(title=" Tickets", description="Are you sure you want to close this ticket? Reply with `close` if you are sure.", color=0x00a8ff)
+                em = nextcord.Embed(title=" Tickets", description="Are you sure you want to close this ticket? Reply with `close` if you are sure.", color=0x00a8ff)
             
                 await ctx.send(embed=em)
                 await self.bot.wait_for('message', check=check, timeout=60)
@@ -110,7 +117,7 @@ class Tickets(commands.Cog):
                     json.dump(data, f)
             
             except asyncio.TimeoutError:
-                em = discord.Embed(title=" Tickets", description="You have run out of time to close this ticket. Please run the command again.", color=0x00a8ff)
+                em = nextcord.Embed(title=" Tickets", description="You have run out of time to close this ticket. Please run the command again.", color=0x00a8ff)
                 await ctx.send(embed=em)
 
             
@@ -148,20 +155,20 @@ class Tickets(commands.Cog):
                     with open('cogs/data/tickets.json', 'w') as f:
                         json.dump(data, f)
                     
-                    em = discord.Embed(title=" Tickets", description="You have successfully added `{}` to the list of roles with access to tickets.".format(role.name), color=0x00a8ff)
+                    em = nextcord.Embed(title=" Tickets", description="You have successfully added `{}` to the list of roles with access to tickets.".format(role.name), color=0x00a8ff)
 
                     await ctx.send(embed=em)
 
                 except:
-                    em = discord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
+                    em = nextcord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
                     await ctx.send(embed=em)
             
             else:
-                em = discord.Embed(title=" Tickets", description="That role already has access to tickets!", color=0x00a8ff)
+                em = nextcord.Embed(title=" Tickets", description="That role already has access to tickets!", color=0x00a8ff)
                 await ctx.send(embed=em)
         
         else:
-            em = discord.Embed(title=" Tickets", description="Sorry, you don't have permission to run that command.", color=0x00a8ff)
+            em = nextcord.Embed(title=" Tickets", description="Sorry, you don't have permission to run that command.", color=0x00a8ff)
             await ctx.send(embed=em)
 
     @commands.command()
@@ -201,21 +208,21 @@ class Tickets(commands.Cog):
                     with open('cogs/data/tickets.json', 'w') as f:
                         json.dump(data, f)
 
-                    em = discord.Embed(title=" Tickets", description="You have successfully removed `{}` from the list of roles with access to tickets.".format(role.name), color=0x00a8ff)
+                    em = nextcord.Embed(title=" Tickets", description="You have successfully removed `{}` from the list of roles with access to tickets.".format(role.name), color=0x00a8ff)
 
                     await ctx.send(embed=em)
                 
                 else:
                     
-                    em = discord.Embed(title=" Tickets", description="That role already doesn't have access to tickets!", color=0x00a8ff)
+                    em = nextcord.Embed(title=" Tickets", description="That role already doesn't have access to tickets!", color=0x00a8ff)
                     await ctx.send(embed=em)
 
             except:
-                em = discord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
+                em = nextcord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
                 await ctx.send(embed=em)
         
         else:
-            em = discord.Embed(title=" Tickets", description="Sorry, you don't have permission to run that command.", color=0x00a8ff)
+            em = nextcord.Embed(title=" Tickets", description="Sorry, you don't have permission to run that command.", color=0x00a8ff)
             await ctx.send(embed=em)
 
     @commands.command()
@@ -252,20 +259,20 @@ class Tickets(commands.Cog):
                     with open('cogs/data/tickets.json', 'w') as f:
                         json.dump(data, f)
 
-                    em = discord.Embed(title=" Tickets", description="You have successfully added `{}` to the list of roles that get pinged when new tickets are created!".format(role.name), color=0x00a8ff)
+                    em = nextcord.Embed(title=" Tickets", description="You have successfully added `{}` to the list of roles that get pinged when new tickets are created!".format(role.name), color=0x00a8ff)
 
                     await ctx.send(embed=em)
 
                 except:
-                    em = discord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
+                    em = nextcord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
                     await ctx.send(embed=em)
                 
             else:
-                em = discord.Embed(title=" Tickets", description="That role already receives pings when tickets are created.", color=0x00a8ff)
+                em = nextcord.Embed(title=" Tickets", description="That role already receives pings when tickets are created.", color=0x00a8ff)
                 await ctx.send(embed=em)
         
         else:
-            em = discord.Embed(title=" Tickets", description="Sorry, you don't have permission to run that command.", color=0x00a8ff)
+            em = nextcord.Embed(title=" Tickets", description="Sorry, you don't have permission to run that command.", color=0x00a8ff)
             await ctx.send(embed=em)
 
     @commands.command()
@@ -306,19 +313,19 @@ class Tickets(commands.Cog):
                     with open('cogs/data/tickets.json', 'w') as f:
                         json.dump(data, f)
 
-                    em = discord.Embed(title=" Tickets", description="You have successfully removed `{}` from the list of roles that get pinged when new tickets are created.".format(role.name), color=0x00a8ff)
+                    em = nextcord.Embed(title=" Tickets", description="You have successfully removed `{}` from the list of roles that get pinged when new tickets are created.".format(role.name), color=0x00a8ff)
                     await ctx.send(embed=em)
                 
                 else:
-                    em = discord.Embed(title=" Tickets", description="That role already isn't getting pinged when new tickets are created!", color=0x00a8ff)
+                    em = nextcord.Embed(title=" Tickets", description="That role already isn't getting pinged when new tickets are created!", color=0x00a8ff)
                     await ctx.send(embed=em)
 
             except:
-                em = discord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
+                em = nextcord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
                 await ctx.send(embed=em)
         
         else:
-            em = discord.Embed(title=" Tickets", description="Sorry, you don't have permission to run that command.", color=0x00a8ff)
+            em = nextcord.Embed(title=" Tickets", description="Sorry, you don't have permission to run that command.", color=0x00a8ff)
             await ctx.send(embed=em)
 
 
@@ -339,11 +346,11 @@ class Tickets(commands.Cog):
             with open('cogs/data/tickets.json', 'w') as f:
                 json.dump(data, f)
             
-            em = discord.Embed(title=" Tickets", description="You have successfully added `{}` to the list of roles that can run admin-level commands!".format(role.name), color=0x00a8ff)
+            em = nextcord.Embed(title=" Tickets", description="You have successfully added `{}` to the list of roles that can run admin-level commands!".format(role.name), color=0x00a8ff)
             await ctx.send(embed=em)
 
         except:
-            em = discord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
+            em = nextcord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
             await ctx.send(embed=em)
 
     @commands.command()
@@ -369,16 +376,16 @@ class Tickets(commands.Cog):
                 with open('cogs/data/tickets.json', 'w') as f:
                     json.dump(data, f)
                 
-                em = discord.Embed(title=" Tickets", description="You have successfully removed `{}` from the list of roles that get pinged when new tickets are created.".format(role.name), color=0x00a8ff)
+                em = nextcord.Embed(title=" Tickets", description="You have successfully removed `{}` from the list of roles that get pinged when new tickets are created.".format(role.name), color=0x00a8ff)
 
                 await ctx.send(embed=em)
             
             else:
-                em = discord.Embed(title=" Tickets", description="That role isn't getting pinged when new tickets are created!", color=0x00a8ff)
+                em = nextcord.Embed(title=" Tickets", description="That role isn't getting pinged when new tickets are created!", color=0x00a8ff)
                 await ctx.send(embed=em)
 
         except:
-            em = discord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
+            em = nextcord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
             await ctx.send(embed=em)
 
 def setup(bot):
