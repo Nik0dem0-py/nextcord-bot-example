@@ -1,6 +1,6 @@
 # nextcord-bot-example
 
-Welcome! :heart: I'm back at it again, this time it's going to be better. An hour ago (11.11.21 around 10pm), I leaked my token :rofl:, Discord's bot DM'ed me (great system discord!) Anyways, where was I? Ah yes, here are the instruction how to use it!
+Welcome! :heart: I'm back at it again, this time it's going to be better (did I even do anything "last" time?).
 
 ## Prerequisites:
 
