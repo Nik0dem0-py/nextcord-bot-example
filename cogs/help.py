@@ -49,11 +49,6 @@ class Help(commands.Cog):
         owner = "<@718183313176526877>"
         owner_name = "Niko UwU#6239"
         
-	
-	    
-    	
-
-       
         if not input:
             try:
                 owner = ctx.guild.get_member(owner).mention
@@ -65,15 +60,11 @@ class Help(commands.Cog):
             emb = nextcord.Embed(title='Commands and modules', color=nextcord.Color.blue(),
                                 description=f'Use `{prefix}help <module>` to gain more information about that module '
                                             f':smiley:\n')
-
-            
             cogs_desc = ''
             for cog in self.bot.cogs:
                 cogs_desc += f'`{cog}` {self.bot.cogs[cog].__doc__}\n'
-
-           
+		
             emb.add_field(name='Modules', value=cogs_desc, inline=False)
-
             
             commands_desc = ''
             for command in self.bot.walk_commands():
@@ -93,46 +84,30 @@ class Help(commands.Cog):
 
       
         elif len(input) == 1:
-
-            
-            for cog in self.bot.cogs:
-               
-                if cog.lower() == input[0].lower():
-
-                    
+            for cog in self.bot.cogs: 
+                if cog.lower() == input[0].lower():                 
                     emb = nextcord.Embed(title=f'{cog} - Commands', description=self.bot.cogs[cog].__doc__,
                                         color=nextcord.Color.blue())
-
-                   
                     for command in self.bot.get_cog(cog).get_commands():
-                        
                         if not command.hidden:
                             emb.add_field(name=f"`{prefix}{command.name}`", value=command.help, inline=False)
-                    
                     break
-
-           
             else:
                 emb = nextcord.Embed(title="What's that?!",
                                     description=f"I've never heard from a category called `{input[0]}` before :scream:",
                                     color=nextcord.Color.orange())
-
-      
         elif len(input) > 1:
             emb = nextcord.Embed(title="That's too much.",
                                 description="Please request only one module at once :sweat_smile:",
                                 color=nextcord.Color.orange())
-
         else:
             emb = nextcord.Embed(title="It's a magical place.",
                                 description="I don't know how you got here. But I didn't see this coming at all.\n"
                                             "Would you please be so kind to report that issue to me on github?\n",
                                            
                                 color=nextcord.Color.red())
-
      
         await send_embed(ctx, emb)
-
 
 def setup(bot):
     bot.add_cog(Help(bot))
