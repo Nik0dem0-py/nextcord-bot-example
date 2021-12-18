@@ -5,3 +5,4 @@ load_dotenv()
 
 # Bot setup
 PREFIX = "."
+BOT_NAME= "Example Nextcord (GitHub)"

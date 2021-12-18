@@ -23,6 +23,9 @@ class Misc(commands.Cog):
         url: str = f"https://en.wikipedia.org/wiki/{msg}"
         await ctx.send(url)
 
+    @commands.command()
+    async def emojis(self, ctx):
+        ctx.send(emojis.guild)
 
 
     @commands.command()

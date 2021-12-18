@@ -40,10 +40,11 @@ class Moderation(commands.Cog):
         msg = await self.bot.wait_for('message')
         reason = msg.content
         description = f'''
-        **Member:** = {member}
+        **Member:**  {member}
         **Responsible moderator:** {ctx.author.mention}
         **Reason:** {reason}
         '''
+        logger.info(description)
 
         embed = nextcord.Embed(title='Kick', description=description, colour=nextcord.Colour.green())
         try:
@@ -65,10 +66,11 @@ class Moderation(commands.Cog):
         msg = await self.bot.wait_for('message')
         reason = msg.content
         description = f'''
-        **Member:** = {member}
+        **Member:**  {member}
         **Responsible moderator:** {ctx.author.mention}
         **Reason:** {reason}
         '''
+        logger.info(description)
 
         embed = nextcord.Embed(title='Ban', description=description, colour=nextcord.Colour.green())
         embed.set_image(url="https://tenor.com/view/bongocat-banhammer-ban-hammer-bongo-gif-18219363")
@@ -84,7 +86,7 @@ class Moderation(commands.Cog):
                     f"May you inform the server team about this issue? :slight_smile: ", embed=embed)
 
 
-# The below code unbans player.
+
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def unban(self, ctx, *, member):
@@ -97,6 +99,7 @@ class Moderation(commands.Cog):
             if (user.name, user.discriminator) == (member_name, member_discriminator):
                 await ctx.guild.unban(user)
                 await ctx.send(f'User {user.mention} has been unbanned')
+                logger.info(f"User {user} has been unbanned")
                 return
 
     @commands.command()
@@ -106,6 +109,8 @@ class Moderation(commands.Cog):
         perms = nextcord.Permissions(view_channel= False)
         await role.edit(permissions=perms)   
         await ctx.send("**Full server lockdown iniciated.**")
+        logger.info(f"{guild.name} on lockdown")
+
 
 
     @commands.command()
