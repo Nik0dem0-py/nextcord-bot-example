@@ -1,5 +1,5 @@
 from nextcord.ext import commands
-from data.role_view import RoleView
+from role_view import RoleView
 
 
 class ButtonRolesCog(commands.Cog, name="Button Roles"):
