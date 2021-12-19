@@ -33,7 +33,7 @@ class RoleView(nextcord.ui.View):
     @nextcord.ui.button(
         label="Developer",
         emoji="💻",
-        style=nextcord.ButtonStyle.green,
+        style=nextcord.ButtonStyle.primary,
         custom_id=custom_id(VIEW_NAME, config.DEVELOPER_ROLE_ID),
     )
     async def developer_button(self, button, interaction):
@@ -42,7 +42,7 @@ class RoleView(nextcord.ui.View):
     @nextcord.ui.button(
         label="Content Creator",
         emoji="✍",
-        style=nextcord.ButtonStyle.red,
+        style=nextcord.ButtonStyle.primary,
         custom_id=custom_id(VIEW_NAME, config.CONTENT_CREATOR_ROLE_ID),
     )
     async def content_creator_button(self, button, interaction):
@@ -51,17 +51,8 @@ class RoleView(nextcord.ui.View):
     @nextcord.ui.button(
         label="YouTube Ping",
         emoji="🔔",
-        style=nextcord.ButtonStyle.green,
+        style=nextcord.ButtonStyle.primary,
         custom_id=custom_id(VIEW_NAME, config.YOUTUBE_PING_ROLE_ID),
     )
     async def youtube_ping_button(self, button, interaction):
-        await self.handle_click(button, interaction)
-
-    @nextcord.ui.button(
-        label="Minecraft",
-        emoji="⛏️",
-        style=nextcord.ButtonStyle.red,
-        custom_id=custom_id(VIEW_NAME, config.MINECRAFT_PING_ROLE_ID),
-    )
-    async def minecraft_ping_button(self, button, interaction):
         await self.handle_click(button, interaction)

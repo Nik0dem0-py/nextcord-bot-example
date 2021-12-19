@@ -4,11 +4,6 @@ import re
 
 load_dotenv()
 
-
-def custom_id(view: str, id: int) -> str:
-    """create a custom id from the bot name : the view : the identifier"""
-    return f"{BOT_NAME}:{view}:{id}"
-
 # Bot setup
 PREFIX = "."
 BOT_NAME= "Example Nextcord (GitHub)"
@@ -23,3 +18,9 @@ MINECRAFT_PING_ROLE_ID= "816989544623898665"
 #Guild IDs
 
 GUILD_IDS=[811178517969895474]
+
+
+def custom_id(view: str, id: int) -> str:
+    """create a custom id from the bot name : the view : the identifier"""
+    return f"{BOT_NAME}:{view}:{id}"
+
