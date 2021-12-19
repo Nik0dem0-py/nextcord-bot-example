@@ -25,7 +25,7 @@ class User(commands.Cog):
     async def on_ready(self):
         print('Cog "User" has been loaded')
     
-    @slash_command(name="avatar", description="Shows following member's profile picture", guild_ids=guild_ids)
+    @slash_command(name="avatar", description="Shows following member's profile picture", guild_ids=config.GUILD_IDS)
     async def _avatar(self, ctx, member : nextcord.Member):
         logger.info(f"Avatar command used to show {member}")
         """Shows following member's profile picture"""
@@ -33,7 +33,7 @@ class User(commands.Cog):
         embed.set_image(url=member.avatar.url)
         await ctx.respond(embed=embed)
 
-    @slash_command(name="userinfo", description="Shows information about the following member", guild_ids=guild_ids)
+    @slash_command(name="userinfo", description="Shows information about the following member", guild_ids=config.GUILD_IDS)
     async def info(self, ctx, member : nextcord.Member):
         logger.info(f"Info command used to show info of {member}")
         """Shows information about the following member"""
