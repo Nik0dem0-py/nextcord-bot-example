@@ -12,6 +12,7 @@ BOT_NAME= "Example Nextcord (GitHub)"
 
 DEVELOPER_ROLE_ID= "811902358157131806"
 CONTENT_CREATOR_ROLE_ID= "921787921747550249"
+<<<<<<< HEAD
 YOUTUBE_PING_ROLE_ID= "921787845784502302"
 MINECRAFT_PING_ROLE_ID= "816989544623898665"
 
@@ -24,3 +25,6 @@ def custom_id(view: str, id: int) -> str:
     """create a custom id from the bot name : the view : the identifier"""
     return f"{BOT_NAME}:{view}:{id}"
 
+=======
+YOUTUBE_PING_ROLE_ID= "921787845784502302"
+>>>>>>> parent of 43e1aec (slash commands :eyes:)

@@ -57,6 +57,7 @@ In that .env file, paste in your token from [here](https://discord.com/developer
 bottoken=token.in.here
 ```
 
+<<<<<<< HEAD
 **3.5. Edit `config.py` with all the correct IDs**
 
 For example:
@@ -68,6 +69,8 @@ GUILD_IDS=[811178517969895474] ---> GUILD_IDS=[12341231241, 21432412351, etc . .
 ```
 
 
+=======
+>>>>>>> parent of 43e1aec (slash commands :eyes:)
 **4. Hit that run button and BOOM! :white_check_mark:**
 
 You can open your IDE of choice and turn run it there

@@ -11,8 +11,7 @@ import random
 from itertools import cycle
 import config
 import sys
-from discord_ui import UI
-from discord_ui.cogs import slash_command, subslash_command, listening_component
+
 
 
 
@@ -21,7 +20,7 @@ from discord_ui.cogs import slash_command, subslash_command, listening_component
 bot = commands.Bot(command_prefix=config.PREFIX, case_insensitive=True)
 bot.remove_command('help')
 statuses = ["I'm on Nik0dem0-py's Github!", "Hello there! ", "This bot is still getting developed!"]
-ui = UI(bot)
+
 
 
 @tasks.loop(seconds=10.0)
