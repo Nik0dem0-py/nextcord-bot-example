@@ -64,7 +64,7 @@ For example:
     Change `guild_ids` with you own server IDs
 
 ```
-guild_ids=[811178517969895474] ---> guild_ids=[12341231241, 21432412351, etc . . .]
+GUILD_IDS=[811178517969895474] ---> GUILD_IDS=[12341231241, 21432412351, etc . . .]
 ```
 
 

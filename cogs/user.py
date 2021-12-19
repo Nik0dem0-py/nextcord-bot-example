@@ -4,6 +4,7 @@ from nextcord.ext.commands import bot
 import logging
 from discord_ui import UI
 from discord_ui.cogs import slash_command, subslash_command, listening_component
+import config
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -11,7 +12,6 @@ handler = logging.FileHandler(filename="discord.log", encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
-guild_ids=[811178517969895474]
 
 class User(commands.Cog):
     """
