@@ -1,7 +1,8 @@
 from nextcord.ext import commands
 import nextcord
 import requests
-import logging 
+import logging
+from discord_ui import UI, SlashOption
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)

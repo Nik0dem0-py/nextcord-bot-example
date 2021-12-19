@@ -57,6 +57,17 @@ In that .env file, paste in your token from [here](https://discord.com/developer
 bottoken=token.in.here
 ```
 
+**3.5. Edit `config.py` with all the correct IDs**
+
+For example:
+   
+    Change `guild_ids` with you own server IDs
+
+```
+guild_ids=[811178517969895474] ---> guild_ids=[12341231241, 21432412351, etc . . .]
+```
+
+
 **4. Hit that run button and BOOM! :white_check_mark:**
 
 You can open your IDE of choice and turn run it there
