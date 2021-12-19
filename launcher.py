@@ -61,6 +61,13 @@ for filename in os.listdir('cogs'):
 load_dotenv()
 
 TOKEN = os.getenv("bottoken")
-bot.run(TOKEN)
+
+@bot.command()
+@commands.is_owner()
+async def bye(ctx):
+    await ctx.bot.close()
+
+
+bot.run(TOKEN, reconnect=True)
 
 
