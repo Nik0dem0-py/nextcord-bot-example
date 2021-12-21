@@ -28,25 +28,25 @@ class Calculator(commands.Cog):
     async def add(self, ctx, *nums):
         """Adds two numbers."""
         var = f' {"+"} '.join(nums)
-        await ctx.send(f"||{var}|| = **`{eval(var)}`** 🧮")
+        await ctx.reply(f"||{var}|| = **`{eval(var)}`** 🧮")
 
     @commands.command()
     async def multiply(self, ctx, *nums):
         """Multiplies two numbers."""
         var = f' {"*"} '.join(nums)
-        await ctx.send(f"||{var}|| = **`{eval(var)}`** 🧮")
+        await ctx.reply(f"||{var}|| = **`{eval(var)}`** 🧮")
     
     @commands.command()
     async def divide(self, ctx, *nums):
         """Divides two numbers."""
         var = f' {"/"} '.join(nums)
-        await ctx.send(f"||{var}|| = **`{eval(var)}`** 🧮")
+        await ctx.reply(f"||{var}|| = **`{eval(var)}`** 🧮")
     
     @commands.command()
     async def subtract(self, ctx, *nums):
         """Subtracts two numbers."""
         var = f' {"-"} '.join(nums)
-        await ctx.send(f"||{var}|| = **`{eval(var)}`** 🧮")
+        await ctx.reply(f"||{var}|| = **`{eval(var)}`** 🧮")
     
 
     

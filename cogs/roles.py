@@ -18,7 +18,7 @@ class ButtonRolesCog(commands.Cog, name="Button Roles"):
     @commands.is_owner()
     async def roles(self, ctx: commands.Context):
         """Starts a role view"""
-        await ctx.send("Click a button to add or remove a role.", view=RoleView())
+        await ctx.reply("Click a button to add or remove a role.", view=RoleView())
 
 
 # setup functions for bot

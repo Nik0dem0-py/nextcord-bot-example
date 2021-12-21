@@ -27,7 +27,7 @@ class Utilities(commands.Cog):
     async def ping(self, ctx):
         logger.info("Ping command used")
         """Sends bot latency :ping_pong:"""
-        await ctx.send(f'Pong! :ping_pong: `{round(self.bot.latency * 1000)}ms`')
+        await ctx.reply(f'Pong! :ping_pong: `{round(self.bot.latency * 1000)}ms`')
 
     @commands.command()
     @commands.has_permissions(manage_channels=True)
@@ -35,7 +35,7 @@ class Utilities(commands.Cog):
         logger.info("Delay set to " + seconds + ctx.channel)
         """Sets slowmode in current channel"""
         await ctx.channel.edit(slowmode_delay=seconds)
-        await ctx.send(f"Set the slowmode delay in this channel to {seconds} seconds!")
+        await ctx.reply(f"Set the slowmode delay in this channel to {seconds} seconds!")
 
 def setup(bot):
     bot.add_cog(Utilities(bot))

@@ -13,10 +13,10 @@ logger.addHandler(handler)
 async def send_embed(ctx, embed):
 
     try:
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
     except Forbidden:
         try:
-            await ctx.send("Hey, seems like I can't send embeds. Please check my permissions :)")
+            await ctx.reply("Hey, seems like I can't send embeds. Please check my permissions :)")
         except Forbidden:
             await ctx.author.send(
                 f"Hey, seems like I can't send any message in {ctx.channel.name} on {ctx.guild.name}\n"

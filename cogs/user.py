@@ -29,7 +29,7 @@ class User(commands.Cog):
         """Shows following member's profile picture"""
         embed = nextcord.Embed(title = f"{member.name}'s profile picture", colour = nextcord.Colour.blue())
         embed.set_image(url=member.avatar.url)
-        await ctx.respond(embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.command(name="userinfo", description="Shows information about the following member")
     async def info(self, ctx, member : commands.MemberConverter):
@@ -41,7 +41,7 @@ class User(commands.Cog):
             description = f"ID: `{member.id}`\n Name: `{member.name}#{member.discriminator}` \n Avatar URL: [click!]({member.avatar.url})", 
             colour = nextcord.Colour.blue())
         embed.set_thumbnail(url=member.avatar.url)
-        await ctx.respond(embed=embed)
+        await ctx.reply(embed=embed)
 
 def setup(bot):
     bot.add_cog(User(bot))

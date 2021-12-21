@@ -28,15 +28,15 @@ class Moderation(commands.Cog):
         """ DM the user of your choice """
         try:
             await user.send(message)
-            await ctx.send(f"✉️ Sent a DM to **{user}**")
+            await ctx.reply(f"✉️ Sent a DM to **{user}**")
         except nextcord.Forbidden:
-            await ctx.send("This user might be having DMs blocked or it's a bot account...")
+            await ctx.reply("This user might be having DMs blocked or it's a bot account...")
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
     async def kick(self, ctx, member: commands.MemberConverter):
         """Kicks the following member"""
-        await ctx.send('What is the reason?')
+        await ctx.reply('What is the reason?')
         msg = await self.bot.wait_for('message')
         reason = msg.content
         description = f'''
@@ -49,10 +49,10 @@ class Moderation(commands.Cog):
         embed = nextcord.Embed(title='Kick', description=description, colour=nextcord.Colour.green())
         try:
             await member.kick(reason=reason)
-            await ctx.send(content=None, embed=embed)
+            await ctx.reply(content=None, embed=embed)
         except Forbidden:
             try:
-                await ctx.send("Hey, seems like I can't kick people. Please check my permissions :)")
+                await ctx.reply("Hey, seems like I can't kick people. Please check my permissions :)")
             except Forbidden:
                 await ctx.author.send(
                     f"Hey, seems like I can't send any message in {ctx.channel.name} on {ctx.guild.name}\n"
@@ -62,7 +62,7 @@ class Moderation(commands.Cog):
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member: commands.MemberConverter):
         """Bans the following member"""
-        await ctx.send('What is the reason?')
+        await ctx.reply('What is the reason?')
         msg = await self.bot.wait_for('message')
         reason = msg.content
         description = f'''
@@ -76,10 +76,10 @@ class Moderation(commands.Cog):
         embed.set_image(url="https://tenor.com/view/bongocat-banhammer-ban-hammer-bongo-gif-18219363")
         try:
             await member.ban(reason=reason)
-            await ctx.send(content=None, embed=embed)
+            await ctx.reply(content=None, embed=embed)
         except Forbidden:
             try:
-                await ctx.send("Hey, seems like I can't ban people. Please check my permissions :)")
+                await ctx.reply("Hey, seems like I can't ban people. Please check my permissions :)")
             except Forbidden:
                 await ctx.author.send(
                     f"Hey, seems like I can't send any message in {ctx.channel.name} on {ctx.guild.name}\n"
@@ -98,7 +98,7 @@ class Moderation(commands.Cog):
 
             if (user.name, user.discriminator) == (member_name, member_discriminator):
                 await ctx.guild.unban(user)
-                await ctx.send(f'User {user.mention} has been unbanned')
+                await ctx.reply(f'User {user.mention} has been unbanned')
                 logger.info(f"User {user} has been unbanned")
                 return
 
@@ -108,7 +108,7 @@ class Moderation(commands.Cog):
         role = ctx.guild.roles[1] 
         perms = nextcord.Permissions(view_channel= False)
         await role.edit(permissions=perms)   
-        await ctx.send("**Full server lockdown iniciated.**")
+        await ctx.reply("**Full server lockdown iniciated.**")
         logger.info(f"{guild.name} on lockdown")
 
 
@@ -119,7 +119,7 @@ class Moderation(commands.Cog):
         role = ctx.guild.roles[1] 
         perms = nextcord.Permissions(view_channel= True)
         await role.edit(permissions=perms)
-        await ctx.send("**Server has been unlocked.**")       
+        await ctx.reply("**Server has been unlocked.**")       
 
 
 

@@ -32,7 +32,7 @@ class Translate(commands.Cog):
         translator = Translator()
         translation = translator.translate(thing, dest=lang)
 
-        await ctx.send(f"**`{translation.text}`**")
+        await ctx.reply(f"**`{translation.text}`**")
 
   
 

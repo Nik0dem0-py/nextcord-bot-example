@@ -21,11 +21,11 @@ class Misc(commands.Cog):
     async def wiki(self, ctx, msg):
         """Usage: .wiki {tesla} or .wiki {elon_musk}"""
         url: str = f"https://en.wikipedia.org/wiki/{msg}"
-        await ctx.send(url)
+        await ctx.reply(url)
 
     @commands.command()
     async def emojis(self, ctx):
-        ctx.send(emojis.guild)
+        ctx.reply(emojis.guild)
 
 
     @commands.command()
@@ -43,7 +43,7 @@ class Misc(commands.Cog):
                 count += 1
         word = count + 1
         letter = i + 0
-        await ctx.send(f"World count : {word}, letter count : {letter}")
+        await ctx.reply(f"World count : {word}, letter count : {letter}")
 
 
 
@@ -54,16 +54,16 @@ class Misc(commands.Cog):
         word = ' '.join(msg)
         api = "http://api.urbandictionary.com/v0/define"
         logger.info("Making request to " + api)
-        # Send request to the Urban Dictionary API and grab info
+        # reply request to the Urban Dictionary API and grab info
         response = requests.get(api, params=[("term", word)]).json()
         embed = nextcord.Embed(description="No results found!", colour=nextcord.Colour.blue())
         if len(response["list"]) == 0:
-            return await ctx.send(embed=embed)
+            return await ctx.reply(embed=embed)
         # Add results to the embed
         embed = nextcord.Embed(title="Word", description=word, colour=nextcord.Colour.blue())
         embed.add_field(name="Top definition:", value=response['list'][0]['definition'])
         embed.add_field(name="Examples:", value=response['list'][0]['example'])
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
 
 

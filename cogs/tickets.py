@@ -26,7 +26,7 @@ class Tickets(commands.Cog):
 
     @commands.command()
     async def new(self,ctx, *, args = None):
-        """This creates a new ticket. Add any words after the command if you'd like to send a message when we initially create your ticket."""
+        """This creates a new ticket. Add any words after the command if you'd like to reply a message when we initially create your ticket."""
 
         await self.bot.wait_until_ready()
 
@@ -43,18 +43,18 @@ class Tickets(commands.Cog):
         ticket_number += 1
 
         ticket_channel = await ctx.guild.create_text_channel("ticket-{}".format(ticket_number))
-        await ticket_channel.set_permissions(ctx.guild.get_role(ctx.guild.id), send_messages=False, read_messages=False)
+        await ticket_channel.set_permissions(ctx.guild.get_role(ctx.guild.id), reply_messages=False, read_messages=False)
 
         for role_id in data["valid-roles"]:
             role = ctx.guild.get_role(role_id)
 
-            await ticket_channel.set_permissions(role, send_messages=True, read_messages=True, add_reactions=True, embed_links=True, attach_files=True, read_message_history=True, external_emojis=True)
+            await ticket_channel.set_permissions(role, reply_messages=True, read_messages=True, add_reactions=True, embed_links=True, attach_files=True, read_message_history=True, external_emojis=True)
         
-        await ticket_channel.set_permissions(ctx.author, send_messages=True, read_messages=True, add_reactions=True, embed_links=True, attach_files=True, read_message_history=True, external_emojis=True)
+        await ticket_channel.set_permissions(ctx.author, reply_messages=True, read_messages=True, add_reactions=True, embed_links=True, attach_files=True, read_message_history=True, external_emojis=True)
 
         em = nextcord.Embed(title="New ticket from {}#{}".format(ctx.author.name, ctx.author.discriminator), description= "{}".format(message_content), color=0x00a8ff)
 
-        await ticket_channel.send(embed=em)
+        await ticket_channel.reply(embed=em)
 
         pinged_msg_content = ""
         non_mentionable_roles = []
@@ -73,7 +73,7 @@ class Tickets(commands.Cog):
                     await role.edit(mentionable=True)
                     non_mentionable_roles.append(role)
             
-            await ticket_channel.send(pinged_msg_content)
+            await ticket_channel.reply(pinged_msg_content)
 
             for role in non_mentionable_roles:
                 await role.edit(mentionable=False)
@@ -86,7 +86,7 @@ class Tickets(commands.Cog):
         
         created_em = nextcord.Embed(title=" Tickets", description="Your ticket has been created at {}".format(ticket_channel.mention), color=0x00a8ff)
         
-        await ctx.send(embed=created_em)
+        await ctx.reply(embed=created_em)
 
     @commands.command()
     @has_permissions(administrator=True)
@@ -106,7 +106,7 @@ class Tickets(commands.Cog):
 
                 em = nextcord.Embed(title=" Tickets", description="Are you sure you want to close this ticket? Reply with `close` if you are sure.", color=0x00a8ff)
             
-                await ctx.send(embed=em)
+                await ctx.reply(embed=em)
                 await self.bot.wait_for('message', check=check, timeout=60)
                 await ctx.channel.delete()
 
@@ -118,7 +118,7 @@ class Tickets(commands.Cog):
             
             except asyncio.TimeoutError:
                 em = nextcord.Embed(title=" Tickets", description="You have run out of time to close this ticket. Please run the command again.", color=0x00a8ff)
-                await ctx.send(embed=em)
+                await ctx.reply(embed=em)
 
             
 
@@ -157,19 +157,19 @@ class Tickets(commands.Cog):
                     
                     em = nextcord.Embed(title=" Tickets", description="You have successfully added `{}` to the list of roles with access to tickets.".format(role.name), color=0x00a8ff)
 
-                    await ctx.send(embed=em)
+                    await ctx.reply(embed=em)
 
                 except:
                     em = nextcord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
-                    await ctx.send(embed=em)
+                    await ctx.reply(embed=em)
             
             else:
                 em = nextcord.Embed(title=" Tickets", description="That role already has access to tickets!", color=0x00a8ff)
-                await ctx.send(embed=em)
+                await ctx.reply(embed=em)
         
         else:
             em = nextcord.Embed(title=" Tickets", description="Sorry, you don't have permission to run that command.", color=0x00a8ff)
-            await ctx.send(embed=em)
+            await ctx.reply(embed=em)
 
     @commands.command()
     @has_permissions(administrator=True)
@@ -210,20 +210,20 @@ class Tickets(commands.Cog):
 
                     em = nextcord.Embed(title=" Tickets", description="You have successfully removed `{}` from the list of roles with access to tickets.".format(role.name), color=0x00a8ff)
 
-                    await ctx.send(embed=em)
+                    await ctx.reply(embed=em)
                 
                 else:
                     
                     em = nextcord.Embed(title=" Tickets", description="That role already doesn't have access to tickets!", color=0x00a8ff)
-                    await ctx.send(embed=em)
+                    await ctx.reply(embed=em)
 
             except:
                 em = nextcord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
-                await ctx.send(embed=em)
+                await ctx.reply(embed=em)
         
         else:
             em = nextcord.Embed(title=" Tickets", description="Sorry, you don't have permission to run that command.", color=0x00a8ff)
-            await ctx.send(embed=em)
+            await ctx.reply(embed=em)
 
     @commands.command()
     @has_permissions(administrator=True)
@@ -261,19 +261,19 @@ class Tickets(commands.Cog):
 
                     em = nextcord.Embed(title=" Tickets", description="You have successfully added `{}` to the list of roles that get pinged when new tickets are created!".format(role.name), color=0x00a8ff)
 
-                    await ctx.send(embed=em)
+                    await ctx.reply(embed=em)
 
                 except:
                     em = nextcord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
-                    await ctx.send(embed=em)
+                    await ctx.reply(embed=em)
                 
             else:
                 em = nextcord.Embed(title=" Tickets", description="That role already receives pings when tickets are created.", color=0x00a8ff)
-                await ctx.send(embed=em)
+                await ctx.reply(embed=em)
         
         else:
             em = nextcord.Embed(title=" Tickets", description="Sorry, you don't have permission to run that command.", color=0x00a8ff)
-            await ctx.send(embed=em)
+            await ctx.reply(embed=em)
 
     @commands.command()
     @has_permissions(administrator=True)
@@ -314,19 +314,19 @@ class Tickets(commands.Cog):
                         json.dump(data, f)
 
                     em = nextcord.Embed(title=" Tickets", description="You have successfully removed `{}` from the list of roles that get pinged when new tickets are created.".format(role.name), color=0x00a8ff)
-                    await ctx.send(embed=em)
+                    await ctx.reply(embed=em)
                 
                 else:
                     em = nextcord.Embed(title=" Tickets", description="That role already isn't getting pinged when new tickets are created!", color=0x00a8ff)
-                    await ctx.send(embed=em)
+                    await ctx.reply(embed=em)
 
             except:
                 em = nextcord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
-                await ctx.send(embed=em)
+                await ctx.reply(embed=em)
         
         else:
             em = nextcord.Embed(title=" Tickets", description="Sorry, you don't have permission to run that command.", color=0x00a8ff)
-            await ctx.send(embed=em)
+            await ctx.reply(embed=em)
 
 
     @commands.command()
@@ -347,11 +347,11 @@ class Tickets(commands.Cog):
                 json.dump(data, f)
             
             em = nextcord.Embed(title=" Tickets", description="You have successfully added `{}` to the list of roles that can run admin-level commands!".format(role.name), color=0x00a8ff)
-            await ctx.send(embed=em)
+            await ctx.reply(embed=em)
 
         except:
             em = nextcord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
-            await ctx.send(embed=em)
+            await ctx.reply(embed=em)
 
     @commands.command()
     @has_permissions(administrator=True)
@@ -378,15 +378,15 @@ class Tickets(commands.Cog):
                 
                 em = nextcord.Embed(title=" Tickets", description="You have successfully removed `{}` from the list of roles that get pinged when new tickets are created.".format(role.name), color=0x00a8ff)
 
-                await ctx.send(embed=em)
+                await ctx.reply(embed=em)
             
             else:
                 em = nextcord.Embed(title=" Tickets", description="That role isn't getting pinged when new tickets are created!", color=0x00a8ff)
-                await ctx.send(embed=em)
+                await ctx.reply(embed=em)
 
         except:
             em = nextcord.Embed(title=" Tickets", description="That isn't a valid role ID. Please try again with a valid role ID.")
-            await ctx.send(embed=em)
+            await ctx.reply(embed=em)
 
 def setup(bot):
     bot.add_cog(Tickets(bot))
