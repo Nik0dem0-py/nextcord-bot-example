@@ -6,7 +6,7 @@ Welcome! :heart: I'm back at it again, this time it's going to be better (did I 
 
 - Python 3.10.x is recommended, though 3.9.x and 3.8.x could be used.
 - All required packages are in the `requirements.txt` file.
-- A computer that is able to run Windows 7/8.x/10 or macOS 10.9 **or** chad linux :sunglasses:
+- A computer that is able to run Windows 7/8.x/10/11 or macOS 10.9 **or** chad linux :sunglasses:
 
 
 ## Instructions - How to discord bot. :robot:
