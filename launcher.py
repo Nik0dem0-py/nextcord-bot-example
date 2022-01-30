@@ -19,14 +19,14 @@ import sys
 
 bot = commands.Bot(command_prefix=config.PREFIX, case_insensitive=True)
 bot.remove_command('help')
-statuses = ["I'm on Nik0dem0-py's Github!", "Hello there! ", "This bot is still getting developed!"]
+
 
 
 
 @tasks.loop(seconds=10.0)
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=nextcord.Game(random.choice(statuses)))
+    await bot.change_presence(activity=nextcord.Game(name="I'm a bot"))
 
 
 
@@ -41,15 +41,24 @@ async def on_ready():
 
 
 
-@bot.command()
+@bot.group(name="load", invoke_without_command=True)
+@commands.has_permissions(manage_channels=True)
 async def load(ctx, extension):
     if (ctx.message.author.permissions_in(ctx.message.channel).manage_messages):
         bot.load_extension(f'cogs.{extension}')
         await ctx.send(f'Loaded Cog `{extension}`.')  
 
+@load.command(name="all")
+@commands.has_permissions(manage_channels=True)
+async def all(ctx):
+    for filename in os.listdir('cogs'):
+        if filename.endswith('.py'):
+            bot.load_extension(f'cogs.{filename[:-3]}')
+            await ctx.send(f"Loaded cogs: `{filename[:-3]}`")
+
 @bot.command()
+@commands.has_permissions(manage_channels=True)
 async def unload(ctx, extension):
-    if (ctx.message.author.permissions_in(ctx.message.channel).manage_messages):
         bot.unload_extension(f'cogs.{extension}')
         await ctx.send(f'Unloaded Cog `{extension}`.')
 

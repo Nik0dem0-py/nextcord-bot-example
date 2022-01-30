@@ -15,3 +15,6 @@ CONTENT_CREATOR_ROLE_ID= "921787921747550249"
 YOUTUBE_PING_ROLE_ID= "921787845784502302"
 MINECRAFT_PING_ROLE_ID= "816989544623898665"
 
+def custom_id(view: str, id: int) -> str:
+    """create a custom id from the bot name : the view : the identifier"""
+    return f"{BOT_NAME}:{view}:{id}"
