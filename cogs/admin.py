@@ -108,7 +108,7 @@ class Moderation(commands.Cog):
         role = ctx.guild.roles[1] 
         perms = nextcord.Permissions(view_channel= False)
         await role.edit(permissions=perms)   
-        await ctx.reply("**Full server lockdown iniciated.**")
+        await ctx.reply(f"**{role} cannot talk in the server**")
         logger.info(f"{guild.name} on lockdown")
 
 
@@ -119,7 +119,7 @@ class Moderation(commands.Cog):
         role = ctx.guild.roles[1] 
         perms = nextcord.Permissions(view_channel= True)
         await role.edit(permissions=perms)
-        await ctx.reply("**Server has been unlocked.**")       
+        await ctx.reply(f"**{role} can talk in the server**")       
 
 
 

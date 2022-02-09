@@ -41,20 +41,14 @@ async def on_ready():
 
 
 
-@bot.group(name="load", invoke_without_command=True)
+@bot.command
 @commands.has_permissions(manage_channels=True)
 async def load(ctx, extension):
     if (ctx.message.author.permissions_in(ctx.message.channel).manage_messages):
         bot.load_extension(f'cogs.{extension}')
         await ctx.send(f'Loaded Cog `{extension}`.')  
 
-@load.command(name="all")
-@commands.has_permissions(manage_channels=True)
-async def all(ctx):
-    for filename in os.listdir('cogs'):
-        if filename.endswith('.py'):
-            bot.load_extension(f'cogs.{filename[:-3]}')
-            await ctx.send(f"Loaded cogs: `{filename[:-3]}`")
+
 
 @bot.command()
 @commands.has_permissions(manage_channels=True)
